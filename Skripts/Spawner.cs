@@ -1,23 +1,19 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private Rigidbody  _enemy;
-    [SerializeField] private float  _TimeSpanw;
-    [SerializeField] private Transform[]  _spawner;
+    [SerializeField] private Enemy _enemy;
+    [SerializeField] private float _timeSpawn;
+    [SerializeField] private Transform[] _spawner;
     [SerializeField] private float _yAxis;
+    [SerializeField] private float _range = 300;
 
-    private IEnumerator SpawnObjects()
+    private WaitForSeconds _waitForSeconds;
+
+    private void Awake()
     {
-        yield return new WaitForSeconds(_TimeSpanw);
-
-        int index = Random.Range(0, _spawner.Length);
-        var spawnPosition = _spawner[index].position;
-        var enemy = Instantiate( _enemy, spawnPosition, Quaternion.identity);
-        enemy.AddForce(GetMoveVector());
-
+        _waitForSeconds = new WaitForSeconds(_timeSpawn);
     }
 
     private void Start()
@@ -27,9 +23,19 @@ public class Spawner : MonoBehaviour
 
     private Vector3 GetMoveVector()
     {
-        float x = Random.Range(-300, 300);
-        float z = Random.Range(-300, 300);
+        float x = Random.Range(-_range, _range);
+        float z = Random.Range(-_range, _range);
 
         return new Vector3(x, _yAxis, z);
+    }
+
+    private IEnumerator SpawnObjects()
+    {
+        yield return _waitForSeconds;
+
+        int index = Random.Range(0, _spawner.Length);
+        var spawnPosition = _spawner[index].position;
+        var enemy = Instantiate(_enemy, spawnPosition, Quaternion.identity);
+        enemy.AddForce(GetMoveVector());
     }
 }

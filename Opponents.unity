@@ -600,17 +600,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: {fileID: 1155387032}
-  _TimeSpanw: 2
+  _timeSpawn: 2
   _spawner:
   - {fileID: 12617366}
   - {fileID: 570741006}
   - {fileID: 1038262287}
   _yAxis: 1000
+  _range: 300
 --- !u!54 &1155387032 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 5400000, guid: 753ea9ccf9eee6c42a0954ec8663b992, type: 3}
   m_PrefabInstance: {fileID: 953574686}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1155387036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155387029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2d0387f81fc1f4abad7b17ec2dd88b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1505025532
 GameObject:
   m_ObjectHideFlags: 0
